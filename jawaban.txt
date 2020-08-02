@@ -1,0 +1,106 @@
+jawaban nomor 2
+	1. Create table user
+		CREATE TABLE `users` (
+		  `id` int(11) NOT NULL,
+		  `name` varchar(225) NOT NULL,
+		  `email` varchar(225) NOT NULL,
+		  `password` varchar(225) NOT NULL
+		);
+	2. Create table items
+		CREATE TABLE `items` (
+		  `id` int(11) NOT NULL,
+		  `name` varchar(225) NOT NULL,
+		  `description` varchar(225) NOT NULL,
+		  `price` int(11) NOT NULL,
+		  `stock` int(11) NOT NULL,
+		  `category_id` int(11) NOT NULL
+		);
+	3. Create table categories
+		CREATE TABLE `categories` (
+		  `id` int(11) NOT NULL,
+		  `name` varchar(225) NOT NULL
+		);
+Soal 3 Memasukkan Data pada Table
+
+	1. Insert table user
+		INSERT INTO categories(name, email,password)
+			VALUES('John Doe', 'john@doe.com', 'john123'),
+			('Jane Doe', 'jane@doe.com', 'jane');
+	
+	2. Insert table categories
+		INSERT INTO items(  `name`,
+						    `description`,
+						    `price`,
+						    `stock`,
+						    `category_id`
+						)
+						VALUES(
+						    'Sumsang b50',
+						    'hape keren dari merek sumsang',
+						    '4000000',
+						    '100',
+						    '1'
+						),(
+						    'Uniklooh',
+						    'baju keren dari brand ternama',
+						    '500000',
+						    '50',
+						    '2'
+						),(
+						    'IMHO Watch',
+						    'jam tangan anak yang jujur banget',
+						    '2000000',
+						    '10',
+						    '1'
+						);
+		
+	3. Insert table categories
+	    INSERT INTO categories(name) 
+    		VALUES	('gadget'),
+				    ('cloth'),
+				    ('men'),
+				    ('women'),
+				    ('branded');
+
+Soal 4 Mengambil Data dari Database
+a. Mengambil data users
+Buatlah sebuah query untuk mendapatkan data seluruh user pada table users. Sajikan semua field pada table users KECUALI password nya.
+		SELECT `id`,`name`,`email`FROM `users`
+
+b. Mengambil data items
+	1. Buatlah sebuah query untuk mendapatkan data item pada table items yang memiliki harga di atas 1000000 (satu juta).
+			SELECT
+			    a.*,
+			    b.name
+			FROM
+			    items a
+			INNER JOIN categories b ON
+			    a.category_id = b.id
+			    WHERE a.price>1000000 
+	2. Buat sebuah query untuk mengambil data item pada table items yang memiliki name serupa atau mirip (like) dengan kata kunci “uniklo”, “watch”, atau “sang” (pilih salah satu saja).
+
+			SELECT
+			    a.*,
+			    b.name
+			FROM
+			    items a
+			INNER JOIN categories b ON
+			    a.category_id = b.id
+			WHERE
+			    a.name LIKE '%uniklo%'
+c. Menampilkan data items join dengan kategori
+			SELECT
+			    a.*,
+			    b.name
+			FROM
+			    items a
+			INNER JOIN categories b ON
+			    a.category_id = b.id 
+
+Soal 5 Mengubah Data dari Database
+		UPDATE
+		    items
+		SET
+		    name = 'sumsang',
+		    price = '2500000'
+		WHERE id = 1; =>>'$id'
